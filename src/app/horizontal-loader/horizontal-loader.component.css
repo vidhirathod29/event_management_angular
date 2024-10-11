@@ -1,0 +1,26 @@
+
+.horizontal-loader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 6px;
+  background-color: rgba(216, 236, 226, 0.1);
+  overflow: hidden;
+}
+
+.loader-bar {
+  height: 100%;
+  background-color: #ffff;
+  width: 100%;
+  animation: loading 2s linear infinite;
+}
+
+@keyframes loading {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}

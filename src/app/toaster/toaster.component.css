@@ -1,0 +1,49 @@
+.toast-container {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  width: 300px;
+  padding: 10px;
+  border-radius: 8px;
+  color: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 1000;
+  transition: transform 0.3s ease-in-out;
+}
+
+.toast-container.success {
+  background-color: #4caf50;
+}
+
+.toast-container.error {
+  background-color: #f44336;
+}
+
+.toast-container.warn {
+  background-color: #ff9800;
+}
+
+.toast-message {
+  flex-grow: 1;
+  padding-right: 10px;
+}
+
+.close-btn {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.progress-bar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 4px;
+  background-color: rgba(255, 255, 255, 0.7);
+  transition: width 0.1s linear;
+}
