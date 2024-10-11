@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import {
   FormBuilder,
   ReactiveFormsModule,
@@ -12,13 +12,16 @@ import { Router } from '@angular/router';
 import { jwtDecode } from 'jwt-decode';
 import { CustomToasterService } from '../service/toaster.service';
 import { LoaderService } from '../service/loader.service';
+import { label, title, validation } from '../helper/messages';
+import { BaseComponent } from '../base-component-button/base-component-button.component';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [ReactiveFormsModule, CommonModule, HttpClientModule],
+  imports: [ReactiveFormsModule, CommonModule, HttpClientModule, BaseComponent],
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],
+  encapsulation: ViewEncapsulation.None,
 })
 export class LoginComponent implements OnInit {
   loginForm!: UntypedFormGroup;
@@ -27,12 +30,22 @@ export class LoginComponent implements OnInit {
   year: number = new Date().getFullYear();
   loading = false;
 
+  welcomeBack = title.WELCOME_BACK;
+  signIn = label.SIGN_IN;
+  password = label.PASSWORD;
+  email = label.EMAIL;
+  emailValidation = validation.EMAIL_VALID;
+  emailRequired = validation.EMAIL_REQUIRED;
+  passwordRequired = validation.PASSWORD_REQUIRED;
+  passwordMinLength = validation.PASSWORD_MIN_6;
+  forgotPassword = label.FORGOT_PASSWORD;
+
   constructor(
     private readonly formBuilder: FormBuilder,
     private readonly loginService: LoginService,
     private readonly router: Router,
     private readonly toasterService: CustomToasterService,
-    private loaderService: LoaderService
+    private readonly loaderService: LoaderService
   ) {}
 
   ngOnInit(): void {
@@ -62,14 +75,14 @@ export class LoginComponent implements OnInit {
           const decoded = jwtDecode<any>(token);
           sessionStorage.setItem('id', decoded.id);
         }
-        this.toasterService.success('This is a success message!', 5000);
+        this.toasterService.success(response.message, 5000);
         this.loaderService.hide();
         this.router.navigate(['/dashboard']);
       },
       error: (error) => {
         this.loaderService.hide();
         console.error('Login failed', error);
-        this.errorMessage = 'Invalid login credentials';
+        this.toasterService.error(error.message, 5000);
       },
       complete: () => {
         this.loaderService.hide();

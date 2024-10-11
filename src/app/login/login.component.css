@@ -91,6 +91,11 @@
   display: block;
 }
 
+.btn-primary:disabled {
+  background-color: #c0c0c0;
+  cursor: not-allowed;
+}
+
 p a {
   color: #3aa870;
   text-decoration: none;
@@ -154,6 +159,7 @@ label {
 .d-inline-block {
   display: inline-block !important;
 }
+
 a,
 button {
   outline: 0 !important;
@@ -188,7 +194,11 @@ button {
 }
 
 @keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 

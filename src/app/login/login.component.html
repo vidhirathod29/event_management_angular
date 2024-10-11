@@ -28,10 +28,10 @@
         </div>
         <div class="col-lg-12 text-center">
           <div class="login-card">
-            <h4>Welcome Back !</h4>
+            <h4>{{ welcomeBack }}</h4>
             <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
               <div class="form-group">
-                <label for="email">Email</label>
+                <label for="email">{{ email }}</label>
                 <input
                   type="email"
                   class="form-control"
@@ -47,20 +47,20 @@
                   <small
                     *ngIf="loginForm.get('email')?.errors?.['required']"
                     class="text-danger"
-                    >* Email is required</small
+                    >*{{ emailRequired }}</small
                   >
                   <small
                     *ngIf="loginForm.get('email')?.errors?.['email']"
                     class="text-danger"
-                    >* Please enter a valid email address</small
+                    >* {{ emailValidation }}</small
                   >
                 </div>
               </div>
               <div class="form-group">
                 <div class="float-end">
-                  <a class="text-muted" href="#">Forgot password?</a>
+                  <a class="text-muted" href="#">{{ forgotPassword }}?</a>
                 </div>
-                <label for="password">Password</label>
+                <label for="password">{{ password }}</label>
                 <input
                   type="text"
                   class="form-control"
@@ -76,24 +76,24 @@
                   <small
                     *ngIf="loginForm.get('password')?.errors?.['required']"
                     class="text-danger"
-                    >* Password is required</small
+                    >* {{ passwordRequired }}</small
                   >
                   <small
                     *ngIf="loginForm.get('password')?.errors?.['minlength']"
                     class="text-danger"
-                    >* Password must be at least 6 characters long.</small
+                    >* {{ passwordMinLength }}</small
                   >
                 </div>
               </div>
-              <button
-                type="submit"
-                class="btn btn-primary"
-                (click)="onSubmit()"
-                [disabled]="loading"
-              >
-              <span *ngIf="loading" class="loader"></span>
-              <span *ngIf="!loading">Sign In</span>
-              </button>
+              <app-base-component-button
+              [label]="signIn"
+              [loading]="loading"
+              [disabled]="loading"
+              (click)="onSubmit()"
+              [cssClass]="'btn btn-primary'"
+              type="submit"
+            ></app-base-component-button>
+            
             </form>
           </div>
         </div>

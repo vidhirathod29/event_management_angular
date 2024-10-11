@@ -1,0 +1,11 @@
+<button
+  [type]="type"
+  [ngClass]="cssClass"
+  (click)="onClick()"
+  [disabled]="disabled || loading"
+>
+  <ng-container *ngIf="!loading">{{ label }}</ng-container>
+  <ng-container *ngIf="loading">
+    <span class="loader"></span>
+  </ng-container>
+</button>
