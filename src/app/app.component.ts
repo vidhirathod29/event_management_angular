@@ -5,6 +5,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { ToasterComponent } from './toaster/toaster.component';
 import { HorizontalLoaderComponent } from './horizontal-loader/horizontal-loader.component';
+import { BaseComponent } from './base-component-button/base-component-button.component';
 
 @Component({
   selector: 'app-root',
@@ -16,9 +17,9 @@ import { HorizontalLoaderComponent } from './horizontal-loader/horizontal-loader
     HttpClientModule,
     ToasterComponent,
     HorizontalLoaderComponent,
+    BaseComponent
   ],
-  template: `<router-outlet></router-outlet><app-toaster></app-toaster
-    ><app-horizontal-loader></app-horizontal-loader>`,
+  templateUrl: './app.component.html',
   styleUrl: './app.component.css',
 })
 export class AppComponent {
