@@ -1,0 +1,42 @@
+.sidebar {
+  height: 100%;
+  width: 220px;
+  background-color: #212529;
+  color: white;
+  padding: 15px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  transition: width 0.3s ease;
+}
+
+.main-text {
+  margin-left: 270px;
+  padding: 20px;
+  top: 0;
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 25px;
+  font-family: Inter, sans-serif;
+}
+
+.muted {
+  color: #878a99;
+  text-decoration: none;
+}
+
+ul {
+  list-style-type: none;
+  font-family: Inter, sans-serif;
+  font-size: 0.95rem;
+}
+
+ul li {
+  margin-bottom: 20px;
+}
+
+a:hover {
+  color: white;
+}
